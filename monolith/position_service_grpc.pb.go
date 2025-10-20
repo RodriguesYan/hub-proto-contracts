@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: position_service.proto
 
-package common
+package monolith
 
 import (
 	context "context"

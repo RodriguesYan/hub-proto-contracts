@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package userservice;
 
-option go_package = "github.com/RodriguesYan/hub-proto-contracts/common";
+option go_package = "github.com/RodriguesYan/hub-proto-contracts/auth";
 
 // UserService provides authentication and user management operations
 service UserService {

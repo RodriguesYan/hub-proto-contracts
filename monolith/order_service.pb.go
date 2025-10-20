@@ -4,9 +4,10 @@
 // 	protoc        v5.29.3
 // source: order_service.proto
 
-package common
+package monolith
 
 import (
+	common "github.com/RodriguesYan/hub-proto-contracts/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -107,7 +108,7 @@ func (x *SubmitOrderRequest) GetPrice() float64 {
 
 type SubmitOrderResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse    *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse    *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	OrderId        string                 `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	Status         string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	EstimatedPrice *float64               `protobuf:"fixed64,4,opt,name=estimated_price,json=estimatedPrice,proto3,oneof" json:"estimated_price,omitempty"`
@@ -148,7 +149,7 @@ func (*SubmitOrderResponse) Descriptor() ([]byte, []int) {
 	return file_order_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SubmitOrderResponse) GetApiResponse() *APIResponse {
+func (x *SubmitOrderResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -251,7 +252,7 @@ func (x *GetOrderDetailsRequest) GetUserId() string {
 
 type GetOrderDetailsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	Order         *OrderDetails          `protobuf:"bytes,2,opt,name=order,proto3" json:"order,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -287,7 +288,7 @@ func (*GetOrderDetailsResponse) Descriptor() ([]byte, []int) {
 	return file_order_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetOrderDetailsResponse) GetApiResponse() *APIResponse {
+func (x *GetOrderDetailsResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -355,7 +356,7 @@ func (x *GetOrderStatusRequest) GetUserId() string {
 
 type GetOrderStatusResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	OrderId       string                 `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	StatusMessage string                 `protobuf:"bytes,4,opt,name=status_message,json=statusMessage,proto3" json:"status_message,omitempty"`
@@ -394,7 +395,7 @@ func (*GetOrderStatusResponse) Descriptor() ([]byte, []int) {
 	return file_order_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetOrderStatusResponse) GetApiResponse() *APIResponse {
+func (x *GetOrderStatusResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -483,7 +484,7 @@ func (x *CancelOrderRequest) GetUserId() string {
 
 type CancelOrderResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	OrderId       string                 `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	CancelledAt   string                 `protobuf:"bytes,4,opt,name=cancelled_at,json=cancelledAt,proto3" json:"cancelled_at,omitempty"`
@@ -521,7 +522,7 @@ func (*CancelOrderResponse) Descriptor() ([]byte, []int) {
 	return file_order_service_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *CancelOrderResponse) GetApiResponse() *APIResponse {
+func (x *CancelOrderResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -797,7 +798,7 @@ const file_order_service_proto_rawDesc = "" +
 	"\vSubmitOrder\x12#.hub_investments.SubmitOrderRequest\x1a$.hub_investments.SubmitOrderResponse\x12d\n" +
 	"\x0fGetOrderDetails\x12'.hub_investments.GetOrderDetailsRequest\x1a(.hub_investments.GetOrderDetailsResponse\x12a\n" +
 	"\x0eGetOrderStatus\x12&.hub_investments.GetOrderStatusRequest\x1a'.hub_investments.GetOrderStatusResponse\x12X\n" +
-	"\vCancelOrder\x12#.hub_investments.CancelOrderRequest\x1a$.hub_investments.CancelOrderResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
+	"\vCancelOrder\x12#.hub_investments.CancelOrderRequest\x1a$.hub_investments.CancelOrderResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
 
 var (
 	file_order_service_proto_rawDescOnce sync.Once
@@ -822,7 +823,7 @@ var file_order_service_proto_goTypes = []any{
 	(*CancelOrderRequest)(nil),      // 6: hub_investments.CancelOrderRequest
 	(*CancelOrderResponse)(nil),     // 7: hub_investments.CancelOrderResponse
 	(*OrderDetails)(nil),            // 8: hub_investments.OrderDetails
-	(*APIResponse)(nil),             // 9: hub_investments.APIResponse
+	(*common.APIResponse)(nil),      // 9: hub_investments.APIResponse
 }
 var file_order_service_proto_depIdxs = []int32{
 	9, // 0: hub_investments.SubmitOrderResponse.api_response:type_name -> hub_investments.APIResponse
@@ -850,7 +851,6 @@ func file_order_service_proto_init() {
 	if File_order_service_proto != nil {
 		return
 	}
-	file_common_common_proto_init()
 	file_order_service_proto_msgTypes[0].OneofWrappers = []any{}
 	file_order_service_proto_msgTypes[1].OneofWrappers = []any{}
 	file_order_service_proto_msgTypes[8].OneofWrappers = []any{}

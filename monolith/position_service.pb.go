@@ -4,9 +4,10 @@
 // 	protoc        v5.29.3
 // source: position_service.proto
 
-package common
+package monolith
 
 import (
+	common "github.com/RodriguesYan/hub-proto-contracts/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -83,7 +84,7 @@ func (x *GetPositionsRequest) GetStatus() string {
 
 type GetPositionsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	Positions     []*Position            `protobuf:"bytes,2,rep,name=positions,proto3" json:"positions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -119,7 +120,7 @@ func (*GetPositionsResponse) Descriptor() ([]byte, []int) {
 	return file_position_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetPositionsResponse) GetApiResponse() *APIResponse {
+func (x *GetPositionsResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -179,7 +180,7 @@ func (x *GetPositionAggregationRequest) GetUserId() string {
 
 type GetPositionAggregationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	Aggregation   *PositionAggregation   `protobuf:"bytes,2,opt,name=aggregation,proto3" json:"aggregation,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -215,7 +216,7 @@ func (*GetPositionAggregationResponse) Descriptor() ([]byte, []int) {
 	return file_position_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetPositionAggregationResponse) GetApiResponse() *APIResponse {
+func (x *GetPositionAggregationResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -323,7 +324,7 @@ func (x *CreatePositionRequest) GetCreatedFrom() string {
 
 type CreatePositionResponse struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse     *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse     *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	PositionId      string                 `protobuf:"bytes,2,opt,name=position_id,json=positionId,proto3" json:"position_id,omitempty"`
 	Status          string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	TotalInvestment float64                `protobuf:"fixed64,4,opt,name=total_investment,json=totalInvestment,proto3" json:"total_investment,omitempty"`
@@ -361,7 +362,7 @@ func (*CreatePositionResponse) Descriptor() ([]byte, []int) {
 	return file_position_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *CreatePositionResponse) GetApiResponse() *APIResponse {
+func (x *CreatePositionResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -483,7 +484,7 @@ func (x *UpdatePositionRequest) GetExecutionTime() string {
 
 type UpdatePositionResponse struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse        *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse        *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	PositionId         string                 `protobuf:"bytes,2,opt,name=position_id,json=positionId,proto3" json:"position_id,omitempty"`
 	NewQuantity        float64                `protobuf:"fixed64,3,opt,name=new_quantity,json=newQuantity,proto3" json:"new_quantity,omitempty"`
 	NewAveragePrice    float64                `protobuf:"fixed64,4,opt,name=new_average_price,json=newAveragePrice,proto3" json:"new_average_price,omitempty"`
@@ -527,7 +528,7 @@ func (*UpdatePositionResponse) Descriptor() ([]byte, []int) {
 	return file_position_service_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *UpdatePositionResponse) GetApiResponse() *APIResponse {
+func (x *UpdatePositionResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -1066,7 +1067,7 @@ const file_position_service_proto_rawDesc = "" +
 	"\fGetPositions\x12$.hub_investments.GetPositionsRequest\x1a%.hub_investments.GetPositionsResponse\x12y\n" +
 	"\x16GetPositionAggregation\x12..hub_investments.GetPositionAggregationRequest\x1a/.hub_investments.GetPositionAggregationResponse\x12a\n" +
 	"\x0eCreatePosition\x12&.hub_investments.CreatePositionRequest\x1a'.hub_investments.CreatePositionResponse\x12a\n" +
-	"\x0eUpdatePosition\x12&.hub_investments.UpdatePositionRequest\x1a'.hub_investments.UpdatePositionResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
+	"\x0eUpdatePosition\x12&.hub_investments.UpdatePositionRequest\x1a'.hub_investments.UpdatePositionResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
 
 var (
 	file_position_service_proto_rawDescOnce sync.Once
@@ -1093,7 +1094,7 @@ var file_position_service_proto_goTypes = []any{
 	(*Position)(nil),                       // 8: hub_investments.Position
 	(*PositionAggregation)(nil),            // 9: hub_investments.PositionAggregation
 	(*CategoryAggregation)(nil),            // 10: hub_investments.CategoryAggregation
-	(*APIResponse)(nil),                    // 11: hub_investments.APIResponse
+	(*common.APIResponse)(nil),             // 11: hub_investments.APIResponse
 }
 var file_position_service_proto_depIdxs = []int32{
 	11, // 0: hub_investments.GetPositionsResponse.api_response:type_name -> hub_investments.APIResponse
@@ -1124,7 +1125,6 @@ func file_position_service_proto_init() {
 	if File_position_service_proto != nil {
 		return
 	}
-	file_common_common_proto_init()
 	file_position_service_proto_msgTypes[0].OneofWrappers = []any{}
 	file_position_service_proto_msgTypes[4].OneofWrappers = []any{}
 	file_position_service_proto_msgTypes[6].OneofWrappers = []any{}

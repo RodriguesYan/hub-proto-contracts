@@ -4,9 +4,10 @@
 // 	protoc        v5.29.3
 // source: balance_service.proto
 
-package common
+package monolith
 
 import (
+	common "github.com/RodriguesYan/hub-proto-contracts/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -67,7 +68,7 @@ func (x *GetBalanceRequest) GetUserId() string {
 
 type GetBalanceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	Balance       *Balance               `protobuf:"bytes,2,opt,name=balance,proto3" json:"balance,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -103,7 +104,7 @@ func (*GetBalanceResponse) Descriptor() ([]byte, []int) {
 	return file_balance_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetBalanceResponse) GetApiResponse() *APIResponse {
+func (x *GetBalanceResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -220,7 +221,7 @@ const file_balance_service_proto_rawDesc = "" +
 	"\flast_updated\x18\x06 \x01(\tR\vlastUpdated2g\n" +
 	"\x0eBalanceService\x12U\n" +
 	"\n" +
-	"GetBalance\x12\".hub_investments.GetBalanceRequest\x1a#.hub_investments.GetBalanceResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
+	"GetBalance\x12\".hub_investments.GetBalanceRequest\x1a#.hub_investments.GetBalanceResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
 
 var (
 	file_balance_service_proto_rawDescOnce sync.Once
@@ -239,7 +240,7 @@ var file_balance_service_proto_goTypes = []any{
 	(*GetBalanceRequest)(nil),  // 0: hub_investments.GetBalanceRequest
 	(*GetBalanceResponse)(nil), // 1: hub_investments.GetBalanceResponse
 	(*Balance)(nil),            // 2: hub_investments.Balance
-	(*APIResponse)(nil),        // 3: hub_investments.APIResponse
+	(*common.APIResponse)(nil), // 3: hub_investments.APIResponse
 }
 var file_balance_service_proto_depIdxs = []int32{
 	3, // 0: hub_investments.GetBalanceResponse.api_response:type_name -> hub_investments.APIResponse
@@ -258,7 +259,6 @@ func file_balance_service_proto_init() {
 	if File_balance_service_proto != nil {
 		return
 	}
-	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

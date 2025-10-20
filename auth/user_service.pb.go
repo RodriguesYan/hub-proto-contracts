@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: user_service.proto
 
-package common
+package auth
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -739,7 +739,7 @@ const file_user_service_proto_rawDesc = "" +
 	"\x11UserValidateToken\x12%.userservice.UserValidateTokenRequest\x1a&.userservice.UserValidateTokenResponse\x12S\n" +
 	"\fRegisterUser\x12 .userservice.RegisterUserRequest\x1a!.userservice.RegisterUserResponse\x12Y\n" +
 	"\x0eGetUserProfile\x12\".userservice.GetUserProfileRequest\x1a#.userservice.GetUserProfileResponse\x12P\n" +
-	"\vHealthCheck\x12\x1f.userservice.HealthCheckRequest\x1a .userservice.HealthCheckResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
+	"\vHealthCheck\x12\x1f.userservice.HealthCheckRequest\x1a .userservice.HealthCheckResponseB2Z0github.com/RodriguesYan/hub-proto-contracts/authb\x06proto3"
 
 var (
 	file_user_service_proto_rawDescOnce sync.Once

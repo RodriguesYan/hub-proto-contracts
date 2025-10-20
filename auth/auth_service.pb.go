@@ -4,9 +4,10 @@
 // 	protoc        v5.29.3
 // source: auth_service.proto
 
-package common
+package auth
 
 import (
+	common "github.com/RodriguesYan/hub-proto-contracts/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -75,9 +76,9 @@ func (x *LoginRequest) GetPassword() string {
 
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
-	UserInfo      *UserInfo              `protobuf:"bytes,3,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
+	UserInfo      *common.UserInfo       `protobuf:"bytes,3,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -112,7 +113,7 @@ func (*LoginResponse) Descriptor() ([]byte, []int) {
 	return file_auth_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *LoginResponse) GetApiResponse() *APIResponse {
+func (x *LoginResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -126,7 +127,7 @@ func (x *LoginResponse) GetToken() string {
 	return ""
 }
 
-func (x *LoginResponse) GetUserInfo() *UserInfo {
+func (x *LoginResponse) GetUserInfo() *common.UserInfo {
 	if x != nil {
 		return x.UserInfo
 	}
@@ -179,9 +180,9 @@ func (x *ValidateTokenRequest) GetToken() string {
 
 type ValidateTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	IsValid       bool                   `protobuf:"varint,2,opt,name=is_valid,json=isValid,proto3" json:"is_valid,omitempty"`
-	UserInfo      *UserInfo              `protobuf:"bytes,3,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
+	UserInfo      *common.UserInfo       `protobuf:"bytes,3,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
 	ExpiresAt     int64                  `protobuf:"varint,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -217,7 +218,7 @@ func (*ValidateTokenResponse) Descriptor() ([]byte, []int) {
 	return file_auth_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ValidateTokenResponse) GetApiResponse() *APIResponse {
+func (x *ValidateTokenResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -231,7 +232,7 @@ func (x *ValidateTokenResponse) GetIsValid() bool {
 	return false
 }
 
-func (x *ValidateTokenResponse) GetUserInfo() *UserInfo {
+func (x *ValidateTokenResponse) GetUserInfo() *common.UserInfo {
 	if x != nil {
 		return x.UserInfo
 	}
@@ -267,7 +268,7 @@ const file_auth_service_proto_rawDesc = "" +
 	"expires_at\x18\x04 \x01(\x03R\texpiresAt2\xb5\x01\n" +
 	"\vAuthService\x12F\n" +
 	"\x05Login\x12\x1d.hub_investments.LoginRequest\x1a\x1e.hub_investments.LoginResponse\x12^\n" +
-	"\rValidateToken\x12%.hub_investments.ValidateTokenRequest\x1a&.hub_investments.ValidateTokenResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
+	"\rValidateToken\x12%.hub_investments.ValidateTokenRequest\x1a&.hub_investments.ValidateTokenResponseB2Z0github.com/RodriguesYan/hub-proto-contracts/authb\x06proto3"
 
 var (
 	file_auth_service_proto_rawDescOnce sync.Once
@@ -287,8 +288,8 @@ var file_auth_service_proto_goTypes = []any{
 	(*LoginResponse)(nil),         // 1: hub_investments.LoginResponse
 	(*ValidateTokenRequest)(nil),  // 2: hub_investments.ValidateTokenRequest
 	(*ValidateTokenResponse)(nil), // 3: hub_investments.ValidateTokenResponse
-	(*APIResponse)(nil),           // 4: hub_investments.APIResponse
-	(*UserInfo)(nil),              // 5: hub_investments.UserInfo
+	(*common.APIResponse)(nil),    // 4: hub_investments.APIResponse
+	(*common.UserInfo)(nil),       // 5: hub_investments.UserInfo
 }
 var file_auth_service_proto_depIdxs = []int32{
 	4, // 0: hub_investments.LoginResponse.api_response:type_name -> hub_investments.APIResponse
@@ -311,7 +312,6 @@ func file_auth_service_proto_init() {
 	if File_auth_service_proto != nil {
 		return
 	}
-	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

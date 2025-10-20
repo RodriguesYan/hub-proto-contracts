@@ -4,9 +4,10 @@
 // 	protoc        v5.29.3
 // source: market_data_service.proto
 
-package common
+package monolith
 
 import (
+	common "github.com/RodriguesYan/hub-proto-contracts/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -67,7 +68,7 @@ func (x *GetMarketDataRequest) GetSymbol() string {
 
 type GetMarketDataResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	MarketData    *MarketData            `protobuf:"bytes,2,opt,name=market_data,json=marketData,proto3" json:"market_data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -103,7 +104,7 @@ func (*GetMarketDataResponse) Descriptor() ([]byte, []int) {
 	return file_market_data_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetMarketDataResponse) GetApiResponse() *APIResponse {
+func (x *GetMarketDataResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -163,7 +164,7 @@ func (x *GetAssetDetailsRequest) GetSymbol() string {
 
 type GetAssetDetailsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	Asset         *AssetDetails          `protobuf:"bytes,2,opt,name=asset,proto3" json:"asset,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -199,7 +200,7 @@ func (*GetAssetDetailsResponse) Descriptor() ([]byte, []int) {
 	return file_market_data_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetAssetDetailsResponse) GetApiResponse() *APIResponse {
+func (x *GetAssetDetailsResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -259,7 +260,7 @@ func (x *GetBatchMarketDataRequest) GetSymbols() []string {
 
 type GetBatchMarketDataResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	MarketData    []*MarketData          `protobuf:"bytes,2,rep,name=market_data,json=marketData,proto3" json:"market_data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -295,7 +296,7 @@ func (*GetBatchMarketDataResponse) Descriptor() ([]byte, []int) {
 	return file_market_data_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetBatchMarketDataResponse) GetApiResponse() *APIResponse {
+func (x *GetBatchMarketDataResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -621,7 +622,7 @@ const file_market_data_service_proto_rawDesc = "" +
 	"\x11MarketDataService\x12^\n" +
 	"\rGetMarketData\x12%.hub_investments.GetMarketDataRequest\x1a&.hub_investments.GetMarketDataResponse\x12d\n" +
 	"\x0fGetAssetDetails\x12'.hub_investments.GetAssetDetailsRequest\x1a(.hub_investments.GetAssetDetailsResponse\x12m\n" +
-	"\x12GetBatchMarketData\x12*.hub_investments.GetBatchMarketDataRequest\x1a+.hub_investments.GetBatchMarketDataResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
+	"\x12GetBatchMarketData\x12*.hub_investments.GetBatchMarketDataRequest\x1a+.hub_investments.GetBatchMarketDataResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
 
 var (
 	file_market_data_service_proto_rawDescOnce sync.Once
@@ -645,7 +646,7 @@ var file_market_data_service_proto_goTypes = []any{
 	(*GetBatchMarketDataResponse)(nil), // 5: hub_investments.GetBatchMarketDataResponse
 	(*MarketData)(nil),                 // 6: hub_investments.MarketData
 	(*AssetDetails)(nil),               // 7: hub_investments.AssetDetails
-	(*APIResponse)(nil),                // 8: hub_investments.APIResponse
+	(*common.APIResponse)(nil),         // 8: hub_investments.APIResponse
 }
 var file_market_data_service_proto_depIdxs = []int32{
 	8, // 0: hub_investments.GetMarketDataResponse.api_response:type_name -> hub_investments.APIResponse
@@ -672,7 +673,6 @@ func file_market_data_service_proto_init() {
 	if File_market_data_service_proto != nil {
 		return
 	}
-	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

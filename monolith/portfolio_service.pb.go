@@ -4,9 +4,10 @@
 // 	protoc        v5.29.3
 // source: portfolio_service.proto
 
-package common
+package monolith
 
 import (
+	common "github.com/RodriguesYan/hub-proto-contracts/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -67,7 +68,7 @@ func (x *GetPortfolioSummaryRequest) GetUserId() string {
 
 type GetPortfolioSummaryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ApiResponse   *APIResponse           `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
 	Portfolio     *PortfolioSummary      `protobuf:"bytes,2,opt,name=portfolio,proto3" json:"portfolio,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -103,7 +104,7 @@ func (*GetPortfolioSummaryResponse) Descriptor() ([]byte, []int) {
 	return file_portfolio_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetPortfolioSummaryResponse) GetApiResponse() *APIResponse {
+func (x *GetPortfolioSummaryResponse) GetApiResponse() *common.APIResponse {
 	if x != nil {
 		return x.ApiResponse
 	}
@@ -375,7 +376,7 @@ const file_portfolio_service_proto_rawDesc = "" +
 	"\x16profit_loss_percentage\x18\v \x01(\x01R\x14profitLossPercentage\x12!\n" +
 	"\flast_updated\x18\f \x01(\tR\vlastUpdated2\x84\x01\n" +
 	"\x10PortfolioService\x12p\n" +
-	"\x13GetPortfolioSummary\x12+.hub_investments.GetPortfolioSummaryRequest\x1a,.hub_investments.GetPortfolioSummaryResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
+	"\x13GetPortfolioSummary\x12+.hub_investments.GetPortfolioSummaryRequest\x1a,.hub_investments.GetPortfolioSummaryResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
 
 var (
 	file_portfolio_service_proto_rawDescOnce sync.Once
@@ -395,7 +396,7 @@ var file_portfolio_service_proto_goTypes = []any{
 	(*GetPortfolioSummaryResponse)(nil), // 1: hub_investments.GetPortfolioSummaryResponse
 	(*PortfolioSummary)(nil),            // 2: hub_investments.PortfolioSummary
 	(*PortfolioPosition)(nil),           // 3: hub_investments.PortfolioPosition
-	(*APIResponse)(nil),                 // 4: hub_investments.APIResponse
+	(*common.APIResponse)(nil),          // 4: hub_investments.APIResponse
 }
 var file_portfolio_service_proto_depIdxs = []int32{
 	4, // 0: hub_investments.GetPortfolioSummaryResponse.api_response:type_name -> hub_investments.APIResponse
@@ -415,7 +416,6 @@ func file_portfolio_service_proto_init() {
 	if File_portfolio_service_proto != nil {
 		return
 	}
-	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
