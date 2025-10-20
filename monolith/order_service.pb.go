@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: order_service.proto
 
-package proto
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -797,7 +797,7 @@ const file_order_service_proto_rawDesc = "" +
 	"\vSubmitOrder\x12#.hub_investments.SubmitOrderRequest\x1a$.hub_investments.SubmitOrderResponse\x12d\n" +
 	"\x0fGetOrderDetails\x12'.hub_investments.GetOrderDetailsRequest\x1a(.hub_investments.GetOrderDetailsResponse\x12a\n" +
 	"\x0eGetOrderStatus\x12&.hub_investments.GetOrderStatusRequest\x1a'.hub_investments.GetOrderStatusResponse\x12X\n" +
-	"\vCancelOrder\x12#.hub_investments.CancelOrderRequest\x1a$.hub_investments.CancelOrderResponseB\tZ\a./protob\x06proto3"
+	"\vCancelOrder\x12#.hub_investments.CancelOrderRequest\x1a$.hub_investments.CancelOrderResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
 
 var (
 	file_order_service_proto_rawDescOnce sync.Once

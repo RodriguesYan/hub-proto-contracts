@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: portfolio_service.proto
 
-package proto
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -375,7 +375,7 @@ const file_portfolio_service_proto_rawDesc = "" +
 	"\x16profit_loss_percentage\x18\v \x01(\x01R\x14profitLossPercentage\x12!\n" +
 	"\flast_updated\x18\f \x01(\tR\vlastUpdated2\x84\x01\n" +
 	"\x10PortfolioService\x12p\n" +
-	"\x13GetPortfolioSummary\x12+.hub_investments.GetPortfolioSummaryRequest\x1a,.hub_investments.GetPortfolioSummaryResponseB\tZ\a./protob\x06proto3"
+	"\x13GetPortfolioSummary\x12+.hub_investments.GetPortfolioSummaryRequest\x1a,.hub_investments.GetPortfolioSummaryResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
 
 var (
 	file_portfolio_service_proto_rawDescOnce sync.Once

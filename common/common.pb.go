@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: common.proto
 
-package proto
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -248,7 +248,7 @@ const file_common_proto_rawDesc = "" +
 	"\x05error\x18\x01 \x01(\tR\x05error\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\x05R\x04code\x12\x18\n" +
-	"\adetails\x18\x04 \x03(\tR\adetailsB\tZ\a./protob\x06proto3"
+	"\adetails\x18\x04 \x03(\tR\adetailsB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
 
 var (
 	file_common_proto_rawDescOnce sync.Once

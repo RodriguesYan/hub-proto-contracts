@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: order_service.proto
 
-package proto
+package common
 
 import (
 	context "context"

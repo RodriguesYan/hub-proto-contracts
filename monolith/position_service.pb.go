@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: position_service.proto
 
-package proto
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -1066,7 +1066,7 @@ const file_position_service_proto_rawDesc = "" +
 	"\fGetPositions\x12$.hub_investments.GetPositionsRequest\x1a%.hub_investments.GetPositionsResponse\x12y\n" +
 	"\x16GetPositionAggregation\x12..hub_investments.GetPositionAggregationRequest\x1a/.hub_investments.GetPositionAggregationResponse\x12a\n" +
 	"\x0eCreatePosition\x12&.hub_investments.CreatePositionRequest\x1a'.hub_investments.CreatePositionResponse\x12a\n" +
-	"\x0eUpdatePosition\x12&.hub_investments.UpdatePositionRequest\x1a'.hub_investments.UpdatePositionResponseB\tZ\a./protob\x06proto3"
+	"\x0eUpdatePosition\x12&.hub_investments.UpdatePositionRequest\x1a'.hub_investments.UpdatePositionResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
 
 var (
 	file_position_service_proto_rawDescOnce sync.Once

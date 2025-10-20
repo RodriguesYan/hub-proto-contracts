@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: auth_service.proto
 
-package proto
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -267,7 +267,7 @@ const file_auth_service_proto_rawDesc = "" +
 	"expires_at\x18\x04 \x01(\x03R\texpiresAt2\xb5\x01\n" +
 	"\vAuthService\x12F\n" +
 	"\x05Login\x12\x1d.hub_investments.LoginRequest\x1a\x1e.hub_investments.LoginResponse\x12^\n" +
-	"\rValidateToken\x12%.hub_investments.ValidateTokenRequest\x1a&.hub_investments.ValidateTokenResponseB\tZ\a./protob\x06proto3"
+	"\rValidateToken\x12%.hub_investments.ValidateTokenRequest\x1a&.hub_investments.ValidateTokenResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
 
 var (
 	file_auth_service_proto_rawDescOnce sync.Once

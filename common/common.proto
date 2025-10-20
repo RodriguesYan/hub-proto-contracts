@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package hub_investments;
 
-option go_package = "./proto";
+option go_package = "github.com/RodriguesYan/hub-proto-contracts/common";
 
 // ====================================
 // COMMON MESSAGE TYPES

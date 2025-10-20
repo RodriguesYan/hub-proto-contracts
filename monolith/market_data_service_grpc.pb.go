@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: market_data_service.proto
 
-package proto
+package common
 
 import (
 	context "context"

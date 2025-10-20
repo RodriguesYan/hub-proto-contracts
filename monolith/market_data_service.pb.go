@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: market_data_service.proto
 
-package proto
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -621,7 +621,7 @@ const file_market_data_service_proto_rawDesc = "" +
 	"\x11MarketDataService\x12^\n" +
 	"\rGetMarketData\x12%.hub_investments.GetMarketDataRequest\x1a&.hub_investments.GetMarketDataResponse\x12d\n" +
 	"\x0fGetAssetDetails\x12'.hub_investments.GetAssetDetailsRequest\x1a(.hub_investments.GetAssetDetailsResponse\x12m\n" +
-	"\x12GetBatchMarketData\x12*.hub_investments.GetBatchMarketDataRequest\x1a+.hub_investments.GetBatchMarketDataResponseB\tZ\a./protob\x06proto3"
+	"\x12GetBatchMarketData\x12*.hub_investments.GetBatchMarketDataRequest\x1a+.hub_investments.GetBatchMarketDataResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
 
 var (
 	file_market_data_service_proto_rawDescOnce sync.Once

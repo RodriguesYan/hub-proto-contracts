@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: balance_service.proto
 
-package proto
+package common
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -220,7 +220,7 @@ const file_balance_service_proto_rawDesc = "" +
 	"\flast_updated\x18\x06 \x01(\tR\vlastUpdated2g\n" +
 	"\x0eBalanceService\x12U\n" +
 	"\n" +
-	"GetBalance\x12\".hub_investments.GetBalanceRequest\x1a#.hub_investments.GetBalanceResponseB\tZ\a./protob\x06proto3"
+	"GetBalance\x12\".hub_investments.GetBalanceRequest\x1a#.hub_investments.GetBalanceResponseB4Z2github.com/RodriguesYan/hub-proto-contracts/commonb\x06proto3"
 
 var (
 	file_balance_service_proto_rawDescOnce sync.Once
