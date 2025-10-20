@@ -718,7 +718,7 @@ var File_order_service_proto protoreflect.FileDescriptor
 
 const file_order_service_proto_rawDesc = "" +
 	"\n" +
-	"\x13order_service.proto\x12\x0fhub_investments\x1a\fcommon.proto\"\xc4\x01\n" +
+	"\x13order_service.proto\x12\x0fhub_investments\x1a\x13common/common.proto\"\xc4\x01\n" +
 	"\x12SubmitOrderRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x16\n" +
 	"\x06symbol\x18\x02 \x01(\tR\x06symbol\x12\x1d\n" +
@@ -850,7 +850,7 @@ func file_order_service_proto_init() {
 	if File_order_service_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_common_common_proto_init()
 	file_order_service_proto_msgTypes[0].OneofWrappers = []any{}
 	file_order_service_proto_msgTypes[1].OneofWrappers = []any{}
 	file_order_service_proto_msgTypes[8].OneofWrappers = []any{}

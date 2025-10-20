@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package hub_investments;
 
-import "common.proto";
+import "common/common.proto";
 
 option go_package = "./proto";
 

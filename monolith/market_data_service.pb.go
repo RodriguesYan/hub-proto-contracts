@@ -569,7 +569,7 @@ var File_market_data_service_proto protoreflect.FileDescriptor
 
 const file_market_data_service_proto_rawDesc = "" +
 	"\n" +
-	"\x19market_data_service.proto\x12\x0fhub_investments\x1a\fcommon.proto\".\n" +
+	"\x19market_data_service.proto\x12\x0fhub_investments\x1a\x13common/common.proto\".\n" +
 	"\x14GetMarketDataRequest\x12\x16\n" +
 	"\x06symbol\x18\x01 \x01(\tR\x06symbol\"\x96\x01\n" +
 	"\x15GetMarketDataResponse\x12?\n" +
@@ -672,7 +672,7 @@ func file_market_data_service_proto_init() {
 	if File_market_data_service_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

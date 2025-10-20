@@ -249,7 +249,7 @@ var File_auth_service_proto protoreflect.FileDescriptor
 
 const file_auth_service_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth_service.proto\x12\x0fhub_investments\x1a\fcommon.proto\"@\n" +
+	"\x12auth_service.proto\x12\x0fhub_investments\x1a\x13common/common.proto\"@\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"\x9e\x01\n" +
@@ -311,7 +311,7 @@ func file_auth_service_proto_init() {
 	if File_auth_service_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

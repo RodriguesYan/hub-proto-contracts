@@ -345,7 +345,7 @@ var File_portfolio_service_proto protoreflect.FileDescriptor
 
 const file_portfolio_service_proto_rawDesc = "" +
 	"\n" +
-	"\x17portfolio_service.proto\x12\x0fhub_investments\x1a\fcommon.proto\"5\n" +
+	"\x17portfolio_service.proto\x12\x0fhub_investments\x1a\x13common/common.proto\"5\n" +
 	"\x1aGetPortfolioSummaryRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x9f\x01\n" +
 	"\x1bGetPortfolioSummaryResponse\x12?\n" +
@@ -415,7 +415,7 @@ func file_portfolio_service_proto_init() {
 	if File_portfolio_service_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

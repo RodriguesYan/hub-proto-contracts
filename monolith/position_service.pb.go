@@ -960,7 +960,7 @@ var File_position_service_proto protoreflect.FileDescriptor
 
 const file_position_service_proto_rawDesc = "" +
 	"\n" +
-	"\x16position_service.proto\x12\x0fhub_investments\x1a\fcommon.proto\"~\n" +
+	"\x16position_service.proto\x12\x0fhub_investments\x1a\x13common/common.proto\"~\n" +
 	"\x13GetPositionsRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1b\n" +
 	"\x06symbol\x18\x02 \x01(\tH\x00R\x06symbol\x88\x01\x01\x12\x1b\n" +
@@ -1124,7 +1124,7 @@ func file_position_service_proto_init() {
 	if File_position_service_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_common_common_proto_init()
 	file_position_service_proto_msgTypes[0].OneofWrappers = []any{}
 	file_position_service_proto_msgTypes[4].OneofWrappers = []any{}
 	file_position_service_proto_msgTypes[6].OneofWrappers = []any{}

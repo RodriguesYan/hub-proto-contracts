@@ -205,7 +205,7 @@ var File_balance_service_proto protoreflect.FileDescriptor
 
 const file_balance_service_proto_rawDesc = "" +
 	"\n" +
-	"\x15balance_service.proto\x12\x0fhub_investments\x1a\fcommon.proto\",\n" +
+	"\x15balance_service.proto\x12\x0fhub_investments\x1a\x13common/common.proto\",\n" +
 	"\x11GetBalanceRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x89\x01\n" +
 	"\x12GetBalanceResponse\x12?\n" +
@@ -258,7 +258,7 @@ func file_balance_service_proto_init() {
 	if File_balance_service_proto != nil {
 		return
 	}
-	file_common_proto_init()
+	file_common_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
