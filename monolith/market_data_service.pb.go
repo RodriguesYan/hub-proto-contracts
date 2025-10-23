@@ -323,6 +323,7 @@ type MarketData struct {
 	ChangePercent float64                `protobuf:"fixed64,9,opt,name=change_percent,json=changePercent,proto3" json:"change_percent,omitempty"`
 	Volume        int64                  `protobuf:"varint,10,opt,name=volume,proto3" json:"volume,omitempty"`
 	LastUpdated   string                 `protobuf:"bytes,11,opt,name=last_updated,json=lastUpdated,proto3" json:"last_updated,omitempty"`
+	Category      int32                  `protobuf:"varint,12,opt,name=category,proto3" json:"category,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -432,6 +433,13 @@ func (x *MarketData) GetLastUpdated() string {
 		return x.LastUpdated
 	}
 	return ""
+}
+
+func (x *MarketData) GetCategory() int32 {
+	if x != nil {
+		return x.Category
+	}
+	return 0
 }
 
 type AssetDetails struct {
@@ -587,7 +595,7 @@ const file_market_data_service_proto_rawDesc = "" +
 	"\x1aGetBatchMarketDataResponse\x12?\n" +
 	"\fapi_response\x18\x01 \x01(\v2\x1c.hub_investments.APIResponseR\vapiResponse\x12<\n" +
 	"\vmarket_data\x18\x02 \x03(\v2\x1b.hub_investments.MarketDataR\n" +
-	"marketData\"\xe8\x02\n" +
+	"marketData\"\x84\x03\n" +
 	"\n" +
 	"MarketData\x12\x16\n" +
 	"\x06symbol\x18\x01 \x01(\tR\x06symbol\x12!\n" +
@@ -603,7 +611,8 @@ const file_market_data_service_proto_rawDesc = "" +
 	"\x0echange_percent\x18\t \x01(\x01R\rchangePercent\x12\x16\n" +
 	"\x06volume\x18\n" +
 	" \x01(\x03R\x06volume\x12!\n" +
-	"\flast_updated\x18\v \x01(\tR\vlastUpdated\"\x94\x03\n" +
+	"\flast_updated\x18\v \x01(\tR\vlastUpdated\x12\x1a\n" +
+	"\bcategory\x18\f \x01(\x05R\bcategory\"\x94\x03\n" +
 	"\fAssetDetails\x12\x16\n" +
 	"\x06symbol\x18\x01 \x01(\tR\x06symbol\x12!\n" +
 	"\fcompany_name\x18\x02 \x01(\tR\vcompanyName\x12\x16\n" +

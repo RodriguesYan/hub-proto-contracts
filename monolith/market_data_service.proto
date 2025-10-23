@@ -63,6 +63,7 @@ message MarketData {
   double change_percent = 9;
   int64 volume = 10;
   string last_updated = 11;
+  int32 category = 12;
 }
 
 message AssetDetails {
