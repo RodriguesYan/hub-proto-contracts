@@ -550,6 +550,150 @@ func (x *CancelOrderResponse) GetCancelledAt() string {
 	return ""
 }
 
+type GetOrderHistoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Limit         *int32                 `protobuf:"varint,2,opt,name=limit,proto3,oneof" json:"limit,omitempty"`   // Max number of orders to return
+	Offset        *int32                 `protobuf:"varint,3,opt,name=offset,proto3,oneof" json:"offset,omitempty"` // Pagination offset
+	Status        *string                `protobuf:"bytes,4,opt,name=status,proto3,oneof" json:"status,omitempty"`  // Filter by status (PENDING, EXECUTED, CANCELLED, FAILED)
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOrderHistoryRequest) Reset() {
+	*x = GetOrderHistoryRequest{}
+	mi := &file_order_service_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOrderHistoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOrderHistoryRequest) ProtoMessage() {}
+
+func (x *GetOrderHistoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_order_service_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOrderHistoryRequest.ProtoReflect.Descriptor instead.
+func (*GetOrderHistoryRequest) Descriptor() ([]byte, []int) {
+	return file_order_service_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetOrderHistoryRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *GetOrderHistoryRequest) GetLimit() int32 {
+	if x != nil && x.Limit != nil {
+		return *x.Limit
+	}
+	return 0
+}
+
+func (x *GetOrderHistoryRequest) GetOffset() int32 {
+	if x != nil && x.Offset != nil {
+		return *x.Offset
+	}
+	return 0
+}
+
+func (x *GetOrderHistoryRequest) GetStatus() string {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return ""
+}
+
+type GetOrderHistoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ApiResponse   *common.APIResponse    `protobuf:"bytes,1,opt,name=api_response,json=apiResponse,proto3" json:"api_response,omitempty"`
+	Orders        []*OrderDetails        `protobuf:"bytes,2,rep,name=orders,proto3" json:"orders,omitempty"`
+	TotalCount    int32                  `protobuf:"varint,3,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset        int32                  `protobuf:"varint,5,opt,name=offset,proto3" json:"offset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOrderHistoryResponse) Reset() {
+	*x = GetOrderHistoryResponse{}
+	mi := &file_order_service_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOrderHistoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOrderHistoryResponse) ProtoMessage() {}
+
+func (x *GetOrderHistoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_order_service_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOrderHistoryResponse.ProtoReflect.Descriptor instead.
+func (*GetOrderHistoryResponse) Descriptor() ([]byte, []int) {
+	return file_order_service_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetOrderHistoryResponse) GetApiResponse() *common.APIResponse {
+	if x != nil {
+		return x.ApiResponse
+	}
+	return nil
+}
+
+func (x *GetOrderHistoryResponse) GetOrders() []*OrderDetails {
+	if x != nil {
+		return x.Orders
+	}
+	return nil
+}
+
+func (x *GetOrderHistoryResponse) GetTotalCount() int32 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
+func (x *GetOrderHistoryResponse) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *GetOrderHistoryResponse) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
 // OrderDetails contains complete order information
 type OrderDetails struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
@@ -575,7 +719,7 @@ type OrderDetails struct {
 
 func (x *OrderDetails) Reset() {
 	*x = OrderDetails{}
-	mi := &file_order_service_proto_msgTypes[8]
+	mi := &file_order_service_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -587,7 +731,7 @@ func (x *OrderDetails) String() string {
 func (*OrderDetails) ProtoMessage() {}
 
 func (x *OrderDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_order_service_proto_msgTypes[8]
+	mi := &file_order_service_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -600,7 +744,7 @@ func (x *OrderDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderDetails.ProtoReflect.Descriptor instead.
 func (*OrderDetails) Descriptor() ([]byte, []int) {
-	return file_order_service_proto_rawDescGZIP(), []int{8}
+	return file_order_service_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *OrderDetails) GetOrderId() string {
@@ -764,7 +908,22 @@ const file_order_service_proto_rawDesc = "" +
 	"\fapi_response\x18\x01 \x01(\v2\x1c.hub_investments.APIResponseR\vapiResponse\x12\x19\n" +
 	"\border_id\x18\x02 \x01(\tR\aorderId\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x12!\n" +
-	"\fcancelled_at\x18\x04 \x01(\tR\vcancelledAt\"\xc6\x05\n" +
+	"\fcancelled_at\x18\x04 \x01(\tR\vcancelledAt\"\xa6\x01\n" +
+	"\x16GetOrderHistoryRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x19\n" +
+	"\x05limit\x18\x02 \x01(\x05H\x00R\x05limit\x88\x01\x01\x12\x1b\n" +
+	"\x06offset\x18\x03 \x01(\x05H\x01R\x06offset\x88\x01\x01\x12\x1b\n" +
+	"\x06status\x18\x04 \x01(\tH\x02R\x06status\x88\x01\x01B\b\n" +
+	"\x06_limitB\t\n" +
+	"\a_offsetB\t\n" +
+	"\a_status\"\xe0\x01\n" +
+	"\x17GetOrderHistoryResponse\x12?\n" +
+	"\fapi_response\x18\x01 \x01(\v2\x1c.hub_investments.APIResponseR\vapiResponse\x125\n" +
+	"\x06orders\x18\x02 \x03(\v2\x1d.hub_investments.OrderDetailsR\x06orders\x12\x1f\n" +
+	"\vtotal_count\x18\x03 \x01(\x05R\n" +
+	"totalCount\x12\x14\n" +
+	"\x05limit\x18\x04 \x01(\x05R\x05limit\x12\x16\n" +
+	"\x06offset\x18\x05 \x01(\x05R\x06offset\"\xc6\x05\n" +
 	"\fOrderDetails\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x16\n" +
@@ -793,12 +952,13 @@ const file_order_service_proto_rawDesc = "" +
 	"\x10_execution_priceB\x1d\n" +
 	"\x1b_market_price_at_submissionB\x18\n" +
 	"\x16_market_data_timestampB\x12\n" +
-	"\x10_execution_value2\x8b\x03\n" +
+	"\x10_execution_value2\xf1\x03\n" +
 	"\fOrderService\x12X\n" +
 	"\vSubmitOrder\x12#.hub_investments.SubmitOrderRequest\x1a$.hub_investments.SubmitOrderResponse\x12d\n" +
 	"\x0fGetOrderDetails\x12'.hub_investments.GetOrderDetailsRequest\x1a(.hub_investments.GetOrderDetailsResponse\x12a\n" +
 	"\x0eGetOrderStatus\x12&.hub_investments.GetOrderStatusRequest\x1a'.hub_investments.GetOrderStatusResponse\x12X\n" +
-	"\vCancelOrder\x12#.hub_investments.CancelOrderRequest\x1a$.hub_investments.CancelOrderResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
+	"\vCancelOrder\x12#.hub_investments.CancelOrderRequest\x1a$.hub_investments.CancelOrderResponse\x12d\n" +
+	"\x0fGetOrderHistory\x12'.hub_investments.GetOrderHistoryRequest\x1a(.hub_investments.GetOrderHistoryResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
 
 var (
 	file_order_service_proto_rawDescOnce sync.Once
@@ -812,7 +972,7 @@ func file_order_service_proto_rawDescGZIP() []byte {
 	return file_order_service_proto_rawDescData
 }
 
-var file_order_service_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_order_service_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_order_service_proto_goTypes = []any{
 	(*SubmitOrderRequest)(nil),      // 0: hub_investments.SubmitOrderRequest
 	(*SubmitOrderResponse)(nil),     // 1: hub_investments.SubmitOrderResponse
@@ -822,28 +982,34 @@ var file_order_service_proto_goTypes = []any{
 	(*GetOrderStatusResponse)(nil),  // 5: hub_investments.GetOrderStatusResponse
 	(*CancelOrderRequest)(nil),      // 6: hub_investments.CancelOrderRequest
 	(*CancelOrderResponse)(nil),     // 7: hub_investments.CancelOrderResponse
-	(*OrderDetails)(nil),            // 8: hub_investments.OrderDetails
-	(*common.APIResponse)(nil),      // 9: hub_investments.APIResponse
+	(*GetOrderHistoryRequest)(nil),  // 8: hub_investments.GetOrderHistoryRequest
+	(*GetOrderHistoryResponse)(nil), // 9: hub_investments.GetOrderHistoryResponse
+	(*OrderDetails)(nil),            // 10: hub_investments.OrderDetails
+	(*common.APIResponse)(nil),      // 11: hub_investments.APIResponse
 }
 var file_order_service_proto_depIdxs = []int32{
-	9, // 0: hub_investments.SubmitOrderResponse.api_response:type_name -> hub_investments.APIResponse
-	9, // 1: hub_investments.GetOrderDetailsResponse.api_response:type_name -> hub_investments.APIResponse
-	8, // 2: hub_investments.GetOrderDetailsResponse.order:type_name -> hub_investments.OrderDetails
-	9, // 3: hub_investments.GetOrderStatusResponse.api_response:type_name -> hub_investments.APIResponse
-	9, // 4: hub_investments.CancelOrderResponse.api_response:type_name -> hub_investments.APIResponse
-	0, // 5: hub_investments.OrderService.SubmitOrder:input_type -> hub_investments.SubmitOrderRequest
-	2, // 6: hub_investments.OrderService.GetOrderDetails:input_type -> hub_investments.GetOrderDetailsRequest
-	4, // 7: hub_investments.OrderService.GetOrderStatus:input_type -> hub_investments.GetOrderStatusRequest
-	6, // 8: hub_investments.OrderService.CancelOrder:input_type -> hub_investments.CancelOrderRequest
-	1, // 9: hub_investments.OrderService.SubmitOrder:output_type -> hub_investments.SubmitOrderResponse
-	3, // 10: hub_investments.OrderService.GetOrderDetails:output_type -> hub_investments.GetOrderDetailsResponse
-	5, // 11: hub_investments.OrderService.GetOrderStatus:output_type -> hub_investments.GetOrderStatusResponse
-	7, // 12: hub_investments.OrderService.CancelOrder:output_type -> hub_investments.CancelOrderResponse
-	9, // [9:13] is the sub-list for method output_type
-	5, // [5:9] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	11, // 0: hub_investments.SubmitOrderResponse.api_response:type_name -> hub_investments.APIResponse
+	11, // 1: hub_investments.GetOrderDetailsResponse.api_response:type_name -> hub_investments.APIResponse
+	10, // 2: hub_investments.GetOrderDetailsResponse.order:type_name -> hub_investments.OrderDetails
+	11, // 3: hub_investments.GetOrderStatusResponse.api_response:type_name -> hub_investments.APIResponse
+	11, // 4: hub_investments.CancelOrderResponse.api_response:type_name -> hub_investments.APIResponse
+	11, // 5: hub_investments.GetOrderHistoryResponse.api_response:type_name -> hub_investments.APIResponse
+	10, // 6: hub_investments.GetOrderHistoryResponse.orders:type_name -> hub_investments.OrderDetails
+	0,  // 7: hub_investments.OrderService.SubmitOrder:input_type -> hub_investments.SubmitOrderRequest
+	2,  // 8: hub_investments.OrderService.GetOrderDetails:input_type -> hub_investments.GetOrderDetailsRequest
+	4,  // 9: hub_investments.OrderService.GetOrderStatus:input_type -> hub_investments.GetOrderStatusRequest
+	6,  // 10: hub_investments.OrderService.CancelOrder:input_type -> hub_investments.CancelOrderRequest
+	8,  // 11: hub_investments.OrderService.GetOrderHistory:input_type -> hub_investments.GetOrderHistoryRequest
+	1,  // 12: hub_investments.OrderService.SubmitOrder:output_type -> hub_investments.SubmitOrderResponse
+	3,  // 13: hub_investments.OrderService.GetOrderDetails:output_type -> hub_investments.GetOrderDetailsResponse
+	5,  // 14: hub_investments.OrderService.GetOrderStatus:output_type -> hub_investments.GetOrderStatusResponse
+	7,  // 15: hub_investments.OrderService.CancelOrder:output_type -> hub_investments.CancelOrderResponse
+	9,  // 16: hub_investments.OrderService.GetOrderHistory:output_type -> hub_investments.GetOrderHistoryResponse
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_order_service_proto_init() }
@@ -854,13 +1020,14 @@ func file_order_service_proto_init() {
 	file_order_service_proto_msgTypes[0].OneofWrappers = []any{}
 	file_order_service_proto_msgTypes[1].OneofWrappers = []any{}
 	file_order_service_proto_msgTypes[8].OneofWrappers = []any{}
+	file_order_service_proto_msgTypes[10].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_order_service_proto_rawDesc), len(file_order_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

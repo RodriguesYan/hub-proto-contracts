@@ -20,6 +20,8 @@ service OrderService {
   rpc GetOrderStatus(GetOrderStatusRequest) returns (GetOrderStatusResponse);
   // CancelOrder cancels a pending order
   rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse);
+  // GetOrderHistory retrieves order history for a user
+  rpc GetOrderHistory(GetOrderHistoryRequest) returns (GetOrderHistoryResponse);
 }
 
 // ====================================
@@ -78,6 +80,21 @@ message CancelOrderResponse {
   string order_id = 2;
   string status = 3;
   string cancelled_at = 4;
+}
+
+message GetOrderHistoryRequest {
+  string user_id = 1;
+  optional int32 limit = 2;  // Max number of orders to return
+  optional int32 offset = 3; // Pagination offset
+  optional string status = 4; // Filter by status (PENDING, EXECUTED, CANCELLED, FAILED)
+}
+
+message GetOrderHistoryResponse {
+  APIResponse api_response = 1;
+  repeated OrderDetails orders = 2;
+  int32 total_count = 3;
+  int32 limit = 4;
+  int32 offset = 5;
 }
 
 // OrderDetails contains complete order information

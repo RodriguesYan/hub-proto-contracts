@@ -23,6 +23,7 @@ const (
 	OrderService_GetOrderDetails_FullMethodName = "/hub_investments.OrderService/GetOrderDetails"
 	OrderService_GetOrderStatus_FullMethodName  = "/hub_investments.OrderService/GetOrderStatus"
 	OrderService_CancelOrder_FullMethodName     = "/hub_investments.OrderService/CancelOrder"
+	OrderService_GetOrderHistory_FullMethodName = "/hub_investments.OrderService/GetOrderHistory"
 )
 
 // OrderServiceClient is the client API for OrderService service.
@@ -39,6 +40,8 @@ type OrderServiceClient interface {
 	GetOrderStatus(ctx context.Context, in *GetOrderStatusRequest, opts ...grpc.CallOption) (*GetOrderStatusResponse, error)
 	// CancelOrder cancels a pending order
 	CancelOrder(ctx context.Context, in *CancelOrderRequest, opts ...grpc.CallOption) (*CancelOrderResponse, error)
+	// GetOrderHistory retrieves order history for a user
+	GetOrderHistory(ctx context.Context, in *GetOrderHistoryRequest, opts ...grpc.CallOption) (*GetOrderHistoryResponse, error)
 }
 
 type orderServiceClient struct {
@@ -89,6 +92,16 @@ func (c *orderServiceClient) CancelOrder(ctx context.Context, in *CancelOrderReq
 	return out, nil
 }
 
+func (c *orderServiceClient) GetOrderHistory(ctx context.Context, in *GetOrderHistoryRequest, opts ...grpc.CallOption) (*GetOrderHistoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetOrderHistoryResponse)
+	err := c.cc.Invoke(ctx, OrderService_GetOrderHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrderServiceServer is the server API for OrderService service.
 // All implementations must embed UnimplementedOrderServiceServer
 // for forward compatibility.
@@ -103,6 +116,8 @@ type OrderServiceServer interface {
 	GetOrderStatus(context.Context, *GetOrderStatusRequest) (*GetOrderStatusResponse, error)
 	// CancelOrder cancels a pending order
 	CancelOrder(context.Context, *CancelOrderRequest) (*CancelOrderResponse, error)
+	// GetOrderHistory retrieves order history for a user
+	GetOrderHistory(context.Context, *GetOrderHistoryRequest) (*GetOrderHistoryResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -124,6 +139,9 @@ func (UnimplementedOrderServiceServer) GetOrderStatus(context.Context, *GetOrder
 }
 func (UnimplementedOrderServiceServer) CancelOrder(context.Context, *CancelOrderRequest) (*CancelOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelOrder not implemented")
+}
+func (UnimplementedOrderServiceServer) GetOrderHistory(context.Context, *GetOrderHistoryRequest) (*GetOrderHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOrderHistory not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
 func (UnimplementedOrderServiceServer) testEmbeddedByValue()                      {}
@@ -218,6 +236,24 @@ func _OrderService_CancelOrder_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderService_GetOrderHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOrderHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServiceServer).GetOrderHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OrderService_GetOrderHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServiceServer).GetOrderHistory(ctx, req.(*GetOrderHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OrderService_ServiceDesc is the grpc.ServiceDesc for OrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -240,6 +276,10 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CancelOrder",
 			Handler:    _OrderService_CancelOrder_Handler,
+		},
+		{
+			MethodName: "GetOrderHistory",
+			Handler:    _OrderService_GetOrderHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
