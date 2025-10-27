@@ -18,6 +18,8 @@ service MarketDataService {
   rpc GetAssetDetails(GetAssetDetailsRequest) returns (GetAssetDetailsResponse);
   // GetBatchMarketData retrieves market data for multiple symbols
   rpc GetBatchMarketData(GetBatchMarketDataRequest) returns (GetBatchMarketDataResponse);
+  // StreamQuotes streams real-time quote updates for subscribed symbols
+  rpc StreamQuotes(stream StreamQuotesRequest) returns (stream StreamQuotesResponse);
 }
 
 // ====================================
@@ -79,5 +81,33 @@ message AssetDetails {
   double fifty_two_week_low = 10;
   string currency = 11;
   string exchange = 12;
+}
+
+// ====================================
+// STREAMING QUOTES MESSAGES
+// ====================================
+
+message StreamQuotesRequest {
+  string action = 1;           // "subscribe" or "unsubscribe"
+  repeated string symbols = 2; // List of symbols to subscribe/unsubscribe
+}
+
+message StreamQuotesResponse {
+  string type = 1;              // "quote", "error", "heartbeat"
+  AssetQuote quote = 2;         // Quote data (only for type="quote")
+  string error_message = 3;     // Error message (only for type="error")
+}
+
+message AssetQuote {
+  string symbol = 1;
+  string name = 2;
+  string asset_type = 3;        // "STOCK" or "ETF"
+  double current_price = 4;
+  double base_price = 5;
+  double change = 6;
+  double change_percent = 7;
+  string last_updated = 8;
+  int64 volume = 9;
+  int64 market_cap = 10;
 }
 

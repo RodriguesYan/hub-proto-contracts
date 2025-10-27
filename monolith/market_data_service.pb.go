@@ -574,6 +574,234 @@ func (x *AssetDetails) GetExchange() string {
 	return ""
 }
 
+type StreamQuotesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`   // "subscribe" or "unsubscribe"
+	Symbols       []string               `protobuf:"bytes,2,rep,name=symbols,proto3" json:"symbols,omitempty"` // List of symbols to subscribe/unsubscribe
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StreamQuotesRequest) Reset() {
+	*x = StreamQuotesRequest{}
+	mi := &file_market_data_service_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamQuotesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamQuotesRequest) ProtoMessage() {}
+
+func (x *StreamQuotesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_market_data_service_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StreamQuotesRequest.ProtoReflect.Descriptor instead.
+func (*StreamQuotesRequest) Descriptor() ([]byte, []int) {
+	return file_market_data_service_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *StreamQuotesRequest) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *StreamQuotesRequest) GetSymbols() []string {
+	if x != nil {
+		return x.Symbols
+	}
+	return nil
+}
+
+type StreamQuotesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          string                 `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`                                     // "quote", "error", "heartbeat"
+	Quote         *AssetQuote            `protobuf:"bytes,2,opt,name=quote,proto3" json:"quote,omitempty"`                                   // Quote data (only for type="quote")
+	ErrorMessage  string                 `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"` // Error message (only for type="error")
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StreamQuotesResponse) Reset() {
+	*x = StreamQuotesResponse{}
+	mi := &file_market_data_service_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamQuotesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamQuotesResponse) ProtoMessage() {}
+
+func (x *StreamQuotesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_market_data_service_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StreamQuotesResponse.ProtoReflect.Descriptor instead.
+func (*StreamQuotesResponse) Descriptor() ([]byte, []int) {
+	return file_market_data_service_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *StreamQuotesResponse) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *StreamQuotesResponse) GetQuote() *AssetQuote {
+	if x != nil {
+		return x.Quote
+	}
+	return nil
+}
+
+func (x *StreamQuotesResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+type AssetQuote struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Symbol        string                 `protobuf:"bytes,1,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	AssetType     string                 `protobuf:"bytes,3,opt,name=asset_type,json=assetType,proto3" json:"asset_type,omitempty"` // "STOCK" or "ETF"
+	CurrentPrice  float64                `protobuf:"fixed64,4,opt,name=current_price,json=currentPrice,proto3" json:"current_price,omitempty"`
+	BasePrice     float64                `protobuf:"fixed64,5,opt,name=base_price,json=basePrice,proto3" json:"base_price,omitempty"`
+	Change        float64                `protobuf:"fixed64,6,opt,name=change,proto3" json:"change,omitempty"`
+	ChangePercent float64                `protobuf:"fixed64,7,opt,name=change_percent,json=changePercent,proto3" json:"change_percent,omitempty"`
+	LastUpdated   string                 `protobuf:"bytes,8,opt,name=last_updated,json=lastUpdated,proto3" json:"last_updated,omitempty"`
+	Volume        int64                  `protobuf:"varint,9,opt,name=volume,proto3" json:"volume,omitempty"`
+	MarketCap     int64                  `protobuf:"varint,10,opt,name=market_cap,json=marketCap,proto3" json:"market_cap,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssetQuote) Reset() {
+	*x = AssetQuote{}
+	mi := &file_market_data_service_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssetQuote) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssetQuote) ProtoMessage() {}
+
+func (x *AssetQuote) ProtoReflect() protoreflect.Message {
+	mi := &file_market_data_service_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssetQuote.ProtoReflect.Descriptor instead.
+func (*AssetQuote) Descriptor() ([]byte, []int) {
+	return file_market_data_service_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *AssetQuote) GetSymbol() string {
+	if x != nil {
+		return x.Symbol
+	}
+	return ""
+}
+
+func (x *AssetQuote) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *AssetQuote) GetAssetType() string {
+	if x != nil {
+		return x.AssetType
+	}
+	return ""
+}
+
+func (x *AssetQuote) GetCurrentPrice() float64 {
+	if x != nil {
+		return x.CurrentPrice
+	}
+	return 0
+}
+
+func (x *AssetQuote) GetBasePrice() float64 {
+	if x != nil {
+		return x.BasePrice
+	}
+	return 0
+}
+
+func (x *AssetQuote) GetChange() float64 {
+	if x != nil {
+		return x.Change
+	}
+	return 0
+}
+
+func (x *AssetQuote) GetChangePercent() float64 {
+	if x != nil {
+		return x.ChangePercent
+	}
+	return 0
+}
+
+func (x *AssetQuote) GetLastUpdated() string {
+	if x != nil {
+		return x.LastUpdated
+	}
+	return ""
+}
+
+func (x *AssetQuote) GetVolume() int64 {
+	if x != nil {
+		return x.Volume
+	}
+	return 0
+}
+
+func (x *AssetQuote) GetMarketCap() int64 {
+	if x != nil {
+		return x.MarketCap
+	}
+	return 0
+}
+
 var File_market_data_service_proto protoreflect.FileDescriptor
 
 const file_market_data_service_proto_rawDesc = "" +
@@ -627,11 +855,35 @@ const file_market_data_service_proto_rawDesc = "" +
 	"\x12fifty_two_week_low\x18\n" +
 	" \x01(\x01R\x0ffiftyTwoWeekLow\x12\x1a\n" +
 	"\bcurrency\x18\v \x01(\tR\bcurrency\x12\x1a\n" +
-	"\bexchange\x18\f \x01(\tR\bexchange2\xc8\x02\n" +
+	"\bexchange\x18\f \x01(\tR\bexchange\"G\n" +
+	"\x13StreamQuotesRequest\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x12\x18\n" +
+	"\asymbols\x18\x02 \x03(\tR\asymbols\"\x82\x01\n" +
+	"\x14StreamQuotesResponse\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\tR\x04type\x121\n" +
+	"\x05quote\x18\x02 \x01(\v2\x1b.hub_investments.AssetQuoteR\x05quote\x12#\n" +
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\"\xb4\x02\n" +
+	"\n" +
+	"AssetQuote\x12\x16\n" +
+	"\x06symbol\x18\x01 \x01(\tR\x06symbol\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
+	"\n" +
+	"asset_type\x18\x03 \x01(\tR\tassetType\x12#\n" +
+	"\rcurrent_price\x18\x04 \x01(\x01R\fcurrentPrice\x12\x1d\n" +
+	"\n" +
+	"base_price\x18\x05 \x01(\x01R\tbasePrice\x12\x16\n" +
+	"\x06change\x18\x06 \x01(\x01R\x06change\x12%\n" +
+	"\x0echange_percent\x18\a \x01(\x01R\rchangePercent\x12!\n" +
+	"\flast_updated\x18\b \x01(\tR\vlastUpdated\x12\x16\n" +
+	"\x06volume\x18\t \x01(\x03R\x06volume\x12\x1d\n" +
+	"\n" +
+	"market_cap\x18\n" +
+	" \x01(\x03R\tmarketCap2\xa9\x03\n" +
 	"\x11MarketDataService\x12^\n" +
 	"\rGetMarketData\x12%.hub_investments.GetMarketDataRequest\x1a&.hub_investments.GetMarketDataResponse\x12d\n" +
 	"\x0fGetAssetDetails\x12'.hub_investments.GetAssetDetailsRequest\x1a(.hub_investments.GetAssetDetailsResponse\x12m\n" +
-	"\x12GetBatchMarketData\x12*.hub_investments.GetBatchMarketDataRequest\x1a+.hub_investments.GetBatchMarketDataResponseB6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
+	"\x12GetBatchMarketData\x12*.hub_investments.GetBatchMarketDataRequest\x1a+.hub_investments.GetBatchMarketDataResponse\x12_\n" +
+	"\fStreamQuotes\x12$.hub_investments.StreamQuotesRequest\x1a%.hub_investments.StreamQuotesResponse(\x010\x01B6Z4github.com/RodriguesYan/hub-proto-contracts/monolithb\x06proto3"
 
 var (
 	file_market_data_service_proto_rawDescOnce sync.Once
@@ -645,7 +897,7 @@ func file_market_data_service_proto_rawDescGZIP() []byte {
 	return file_market_data_service_proto_rawDescData
 }
 
-var file_market_data_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_market_data_service_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_market_data_service_proto_goTypes = []any{
 	(*GetMarketDataRequest)(nil),       // 0: hub_investments.GetMarketDataRequest
 	(*GetMarketDataResponse)(nil),      // 1: hub_investments.GetMarketDataResponse
@@ -655,26 +907,32 @@ var file_market_data_service_proto_goTypes = []any{
 	(*GetBatchMarketDataResponse)(nil), // 5: hub_investments.GetBatchMarketDataResponse
 	(*MarketData)(nil),                 // 6: hub_investments.MarketData
 	(*AssetDetails)(nil),               // 7: hub_investments.AssetDetails
-	(*common.APIResponse)(nil),         // 8: hub_investments.APIResponse
+	(*StreamQuotesRequest)(nil),        // 8: hub_investments.StreamQuotesRequest
+	(*StreamQuotesResponse)(nil),       // 9: hub_investments.StreamQuotesResponse
+	(*AssetQuote)(nil),                 // 10: hub_investments.AssetQuote
+	(*common.APIResponse)(nil),         // 11: hub_investments.APIResponse
 }
 var file_market_data_service_proto_depIdxs = []int32{
-	8, // 0: hub_investments.GetMarketDataResponse.api_response:type_name -> hub_investments.APIResponse
-	6, // 1: hub_investments.GetMarketDataResponse.market_data:type_name -> hub_investments.MarketData
-	8, // 2: hub_investments.GetAssetDetailsResponse.api_response:type_name -> hub_investments.APIResponse
-	7, // 3: hub_investments.GetAssetDetailsResponse.asset:type_name -> hub_investments.AssetDetails
-	8, // 4: hub_investments.GetBatchMarketDataResponse.api_response:type_name -> hub_investments.APIResponse
-	6, // 5: hub_investments.GetBatchMarketDataResponse.market_data:type_name -> hub_investments.MarketData
-	0, // 6: hub_investments.MarketDataService.GetMarketData:input_type -> hub_investments.GetMarketDataRequest
-	2, // 7: hub_investments.MarketDataService.GetAssetDetails:input_type -> hub_investments.GetAssetDetailsRequest
-	4, // 8: hub_investments.MarketDataService.GetBatchMarketData:input_type -> hub_investments.GetBatchMarketDataRequest
-	1, // 9: hub_investments.MarketDataService.GetMarketData:output_type -> hub_investments.GetMarketDataResponse
-	3, // 10: hub_investments.MarketDataService.GetAssetDetails:output_type -> hub_investments.GetAssetDetailsResponse
-	5, // 11: hub_investments.MarketDataService.GetBatchMarketData:output_type -> hub_investments.GetBatchMarketDataResponse
-	9, // [9:12] is the sub-list for method output_type
-	6, // [6:9] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	11, // 0: hub_investments.GetMarketDataResponse.api_response:type_name -> hub_investments.APIResponse
+	6,  // 1: hub_investments.GetMarketDataResponse.market_data:type_name -> hub_investments.MarketData
+	11, // 2: hub_investments.GetAssetDetailsResponse.api_response:type_name -> hub_investments.APIResponse
+	7,  // 3: hub_investments.GetAssetDetailsResponse.asset:type_name -> hub_investments.AssetDetails
+	11, // 4: hub_investments.GetBatchMarketDataResponse.api_response:type_name -> hub_investments.APIResponse
+	6,  // 5: hub_investments.GetBatchMarketDataResponse.market_data:type_name -> hub_investments.MarketData
+	10, // 6: hub_investments.StreamQuotesResponse.quote:type_name -> hub_investments.AssetQuote
+	0,  // 7: hub_investments.MarketDataService.GetMarketData:input_type -> hub_investments.GetMarketDataRequest
+	2,  // 8: hub_investments.MarketDataService.GetAssetDetails:input_type -> hub_investments.GetAssetDetailsRequest
+	4,  // 9: hub_investments.MarketDataService.GetBatchMarketData:input_type -> hub_investments.GetBatchMarketDataRequest
+	8,  // 10: hub_investments.MarketDataService.StreamQuotes:input_type -> hub_investments.StreamQuotesRequest
+	1,  // 11: hub_investments.MarketDataService.GetMarketData:output_type -> hub_investments.GetMarketDataResponse
+	3,  // 12: hub_investments.MarketDataService.GetAssetDetails:output_type -> hub_investments.GetAssetDetailsResponse
+	5,  // 13: hub_investments.MarketDataService.GetBatchMarketData:output_type -> hub_investments.GetBatchMarketDataResponse
+	9,  // 14: hub_investments.MarketDataService.StreamQuotes:output_type -> hub_investments.StreamQuotesResponse
+	11, // [11:15] is the sub-list for method output_type
+	7,  // [7:11] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_market_data_service_proto_init() }
@@ -688,7 +946,7 @@ func file_market_data_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_market_data_service_proto_rawDesc), len(file_market_data_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

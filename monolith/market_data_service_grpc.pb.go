@@ -22,6 +22,7 @@ const (
 	MarketDataService_GetMarketData_FullMethodName      = "/hub_investments.MarketDataService/GetMarketData"
 	MarketDataService_GetAssetDetails_FullMethodName    = "/hub_investments.MarketDataService/GetAssetDetails"
 	MarketDataService_GetBatchMarketData_FullMethodName = "/hub_investments.MarketDataService/GetBatchMarketData"
+	MarketDataService_StreamQuotes_FullMethodName       = "/hub_investments.MarketDataService/StreamQuotes"
 )
 
 // MarketDataServiceClient is the client API for MarketDataService service.
@@ -36,6 +37,8 @@ type MarketDataServiceClient interface {
 	GetAssetDetails(ctx context.Context, in *GetAssetDetailsRequest, opts ...grpc.CallOption) (*GetAssetDetailsResponse, error)
 	// GetBatchMarketData retrieves market data for multiple symbols
 	GetBatchMarketData(ctx context.Context, in *GetBatchMarketDataRequest, opts ...grpc.CallOption) (*GetBatchMarketDataResponse, error)
+	// StreamQuotes streams real-time quote updates for subscribed symbols
+	StreamQuotes(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[StreamQuotesRequest, StreamQuotesResponse], error)
 }
 
 type marketDataServiceClient struct {
@@ -76,6 +79,19 @@ func (c *marketDataServiceClient) GetBatchMarketData(ctx context.Context, in *Ge
 	return out, nil
 }
 
+func (c *marketDataServiceClient) StreamQuotes(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[StreamQuotesRequest, StreamQuotesResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &MarketDataService_ServiceDesc.Streams[0], MarketDataService_StreamQuotes_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[StreamQuotesRequest, StreamQuotesResponse]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MarketDataService_StreamQuotesClient = grpc.BidiStreamingClient[StreamQuotesRequest, StreamQuotesResponse]
+
 // MarketDataServiceServer is the server API for MarketDataService service.
 // All implementations must embed UnimplementedMarketDataServiceServer
 // for forward compatibility.
@@ -88,6 +104,8 @@ type MarketDataServiceServer interface {
 	GetAssetDetails(context.Context, *GetAssetDetailsRequest) (*GetAssetDetailsResponse, error)
 	// GetBatchMarketData retrieves market data for multiple symbols
 	GetBatchMarketData(context.Context, *GetBatchMarketDataRequest) (*GetBatchMarketDataResponse, error)
+	// StreamQuotes streams real-time quote updates for subscribed symbols
+	StreamQuotes(grpc.BidiStreamingServer[StreamQuotesRequest, StreamQuotesResponse]) error
 	mustEmbedUnimplementedMarketDataServiceServer()
 }
 
@@ -106,6 +124,9 @@ func (UnimplementedMarketDataServiceServer) GetAssetDetails(context.Context, *Ge
 }
 func (UnimplementedMarketDataServiceServer) GetBatchMarketData(context.Context, *GetBatchMarketDataRequest) (*GetBatchMarketDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBatchMarketData not implemented")
+}
+func (UnimplementedMarketDataServiceServer) StreamQuotes(grpc.BidiStreamingServer[StreamQuotesRequest, StreamQuotesResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method StreamQuotes not implemented")
 }
 func (UnimplementedMarketDataServiceServer) mustEmbedUnimplementedMarketDataServiceServer() {}
 func (UnimplementedMarketDataServiceServer) testEmbeddedByValue()                           {}
@@ -182,6 +203,13 @@ func _MarketDataService_GetBatchMarketData_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MarketDataService_StreamQuotes_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(MarketDataServiceServer).StreamQuotes(&grpc.GenericServerStream[StreamQuotesRequest, StreamQuotesResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MarketDataService_StreamQuotesServer = grpc.BidiStreamingServer[StreamQuotesRequest, StreamQuotesResponse]
+
 // MarketDataService_ServiceDesc is the grpc.ServiceDesc for MarketDataService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -202,6 +230,13 @@ var MarketDataService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MarketDataService_GetBatchMarketData_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "StreamQuotes",
+			Handler:       _MarketDataService_StreamQuotes_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "market_data_service.proto",
 }
